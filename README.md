@@ -1,1 +1,1 @@
-# golang-monitoring
+# Metrics project

@@ -2,13 +2,16 @@ package storage
 
 import "time"
 
+type gauge = float64
+type counter = int64
+
 type GaugeItem struct {
-	Value float64
+	Value gauge
 	Date  time.Time
 }
 
 type CounterItem struct {
-	Value int64
+	Value counter
 	Date  time.Time
 }
 
@@ -17,8 +20,6 @@ type MemStorage struct {
 	Counter map[string][]CounterItem
 }
 
-var Storage MemStorage
-
 func (storage *MemStorage) AddCounter(name string, item CounterItem) {
 	storage.Counter[name] = append(storage.Counter[name], item)
 }
@@ -26,3 +27,5 @@ func (storage *MemStorage) AddCounter(name string, item CounterItem) {
 func (storage *MemStorage) AddGauge(name string, item GaugeItem) {
 	storage.Gauge[name] = item
 }
+
+var Storage MemStorage
