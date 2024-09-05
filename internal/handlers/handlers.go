@@ -1,10 +1,8 @@
 package handlers
 
 import (
-	"fmt"
 	"github.com/vyrodovalexey/golang-monitoring/storage"
 	"net/http"
-	"reflect"
 	"strconv"
 	"strings"
 	"time"
@@ -20,8 +18,6 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	pathSlice := strings.Split(r.URL.Path[1:], "/")
-
-	fmt.Println(len(pathSlice), pathSlice, reflect.TypeOf(pathSlice[1]))
 
 	if len(pathSlice) == 3 && (pathSlice[1] == "gauge" || pathSlice[1] == "counter") {
 		w.WriteHeader(http.StatusNotFound)
